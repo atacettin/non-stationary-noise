@@ -13,15 +13,10 @@ def main():
     parser.add_argument('--out_path', type=str, required=True, 
                         help="File path to save the output")
     
-    # nargs='*' allows zero or more arguments to be passed as a list.
-    # I set type=float assuming the extra arguments for sample_ou are numeric (like theta, mu, sigma).
-    # If they need to be strings, simply remove `type=float`.
     parser.add_argument('--extra_args', nargs='*', type=float, default=[], 
                         help="Additional parameters for the noise function")
 
-    # Parse the arguments from the command line
     args = parser.parse_args()
-
 
     if args.noise_name == 'ornstein_uhlenbeck':
         signal = sample_ou(*args.extra_args)
